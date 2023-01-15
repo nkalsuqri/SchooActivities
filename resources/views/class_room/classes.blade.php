@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html>
-    
+<html> 
 <head>
     <title>The Class - MicronN</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
