@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Add;
 use App\Http\Controllers\ClassRoomeController;
+use App\Http\Controllers\SemesterController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,5 +21,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::resource('classroome',ClassRoomeController::class);
+Route::resource('semester',SemesterController::class);
+
 
 

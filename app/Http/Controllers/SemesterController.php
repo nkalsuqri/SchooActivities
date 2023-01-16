@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Semester;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables as DataTables;
+
 
 class SemesterController extends Controller
 {
@@ -13,9 +15,28 @@ class SemesterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+     
+        if ($request->ajax()) {
+  
+            $data = Semester::latest()->get();
+  
+            return DataTables::of($data)
+                    ->addIndexColumn()
+                    ->addColumn('action', function($row){
+   
+                        $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm editRow">Edit</a>';
+
+                        $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Delete" class="btn btn-danger btn-sm deleteRow">Delete</a>';
+ 
+                         return $btn;
+                 })
+                    ->rawColumns(['action'])
+                    ->make(true);
+        }
+        
+        return view('semester_pages.index');
     }
 
     /**
@@ -36,7 +57,17 @@ class SemesterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Semester::updateOrCreate([
+            'id' => $request->id
+        ],
+        [
+            'code' => $request->code, 
+            'ar_name' => $request->ar_name,
+            'en_name' => $request->en_name,
+            'active' => $request->active,
+        ]);  
+return response()->json(['success'=>'Class Room saved successfully.']);
+
     }
 
     /**
@@ -56,9 +87,10 @@ class SemesterController extends Controller
      * @param  \App\Models\Semester  $semester
      * @return \Illuminate\Http\Response
      */
-    public function edit(Semester $semester)
+    public function edit($id)
     {
-        //
+        $product = Semester::find($id);
+        return response()->json($product);
     }
 
     /**
@@ -79,8 +111,11 @@ class SemesterController extends Controller
      * @param  \App\Models\Semester  $semester
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Semester $semester)
+    public function destroy($id)
     {
-        //
+        
+        Semester::find($id)->delete();
+      
+        return response()->json(['success'=>'Product deleted successfully.']);
     }
 }

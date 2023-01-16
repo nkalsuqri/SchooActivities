@@ -103,7 +103,7 @@
     var table = $('.data-table').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ route('classroome.index') }}",
+        ajax: "{{ route('semester.index') }}",
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
             {data: 'code', name: 'code'},
@@ -132,7 +132,7 @@
     --------------------------------------------*/
     $('body').on('click', '.editRow', function () {
       var product_id = $(this).data('id');
-      $.get("{{ route('classroome.index') }}" +'/' + product_id +'/edit', function (data) {
+      $.get("{{ route('semester.index') }}" +'/' + product_id +'/edit', function (data) {
           $('#modelHeading').html("Edit Product");
           $('#saveBtn').val("edit-user");
           $('#ajaxModel').modal('show');
@@ -155,7 +155,7 @@
       
         $.ajax({
           data: $('#modelForm').serialize(),
-          url: "{{ route('classroome.store') }}",
+          url: "{{ route('semester.store') }}",
           type: "POST",
           dataType: 'json',
           success: function (data) {
@@ -184,7 +184,7 @@
         
         $.ajax({
             type: "DELETE",
-            url: "{{ route('classroome.store') }}"+'/'+product_id,
+            url: "{{ route('semester.store') }}"+'/'+product_id,
             success: function (data) {
                 table.draw();
             },
