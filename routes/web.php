@@ -3,6 +3,8 @@
 use App\Http\Controllers\Add;
 use App\Http\Controllers\ClassRoomeController;
 use App\Http\Controllers\SemesterController;
+use App\Http\Controllers\ResourceController;
+
 
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +24,7 @@ Route::get('/', function () {
 });
 Route::resource('classroome',ClassRoomeController::class);
 Route::resource('semester',SemesterController::class);
+Route::resource('resource',ResourceController::class);
 
 
 
