@@ -4,8 +4,7 @@ use App\Http\Controllers\Add;
 use App\Http\Controllers\ClassRoomeController;
 use App\Http\Controllers\SemesterController;
 use App\Http\Controllers\ResourceController;
-
-
+use App\Http\Controllers\SubjectsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +24,9 @@ Route::get('/', function () {
 Route::resource('classroome',ClassRoomeController::class);
 Route::resource('semester',SemesterController::class);
 Route::resource('resource',ResourceController::class);
+Route::resource('subjects',SubjectsController::class);
+Route::resource('type-info',SubjectsController::class);
+
 
 
 

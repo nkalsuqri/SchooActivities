@@ -36,7 +36,7 @@ class SemesterController extends Controller
                     ->make(true);
         }
         
-        return view('semester_pages.index');
+        return view('semester.index');
     }
 
     /**

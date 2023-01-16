@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class TypeInfo extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'code', 'active','ar_name','en_name'
+    ];
 }
