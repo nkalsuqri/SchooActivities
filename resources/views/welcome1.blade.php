@@ -2,7 +2,7 @@
 
  @extends('back_end/main')
 
- @section('title','| Codermen.com ')
+ @section('title','| alsuqri.com ')
  @section('style')
  
  @endsection
@@ -620,7 +620,6 @@
   
  @endsection
  
- @include('back_end/layout/_footer')
  @section('script')
  
  @endsection

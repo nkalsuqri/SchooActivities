@@ -12,15 +12,16 @@
     <img class="animation__shake" src="assets/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
   </div>
 
-
-   @include('back_end/layout/_nav')
+   
+   @include('back_end/layout/_nav_bar')
+   @include('back_end/layout/_aside_bar')
 
 <div >
   @yield('content')
 </div>
-
+<div >
   @include('back_end/layout/_footer')
-
+</div>
 @yield('script')
  </body>
 </html>
